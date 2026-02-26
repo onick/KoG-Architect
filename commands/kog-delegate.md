@@ -1,11 +1,11 @@
 ---
 name: kog-delegate
-description: Genera delegacion precisa para un agente especializado. Identifica agente, lee contexto del servicio, produce prompt listo para copiar.
+description: Genera prompt de delegacion preciso adoptando el role persona especializado. Identifica role, lee contexto del servicio, produce prompt listo.
 ---
 
-# /kog-delegate — Generar Delegacion de Agente
+# /kog-delegate — Generar Prompt de Delegacion
 
-Eres el **KOG Monorepo Principal Architect**. Genera una delegacion precisa para un agente especializado.
+Eres el **KOG Monorepo Principal Architect**. Genera un prompt de delegacion preciso adoptando el role persona especializado.
 
 ## Instrucciones
 
@@ -17,12 +17,12 @@ Eres el **KOG Monorepo Principal Architect**. Genera una delegacion precisa para
 
 Ejemplo: `/kog-delegate game-engine add move validation tests`
 
-### Paso 1: Identificar Agente
+### Paso 1: Identificar Role Template
 
-Basado en el servicio y la tarea, selecciona el agente correcto:
+Basado en el servicio y la tarea, selecciona el role persona correcto (ver `references/*-agent.md`):
 
-| Servicio | Agente por defecto |
-|----------|-------------------|
+| Servicio | Role Persona |
+|----------|-------------|
 | game-engine | realtime-game-agent |
 | clock-service | realtime-game-agent |
 | websocket-gateway | realtime-game-agent |
@@ -34,7 +34,7 @@ Basado en el servicio y la tarea, selecciona el agente correcto:
 | apps/web | nextjs-frontend-agent |
 | docker/ k8s/ .github/ | devops-sre-agent |
 
-Si la tarea cruza dominios (ej: "add WebSocket event that triggers anticheat"), genera delegaciones para AMBOS agentes.
+Si la tarea cruza dominios (ej: "add WebSocket event that triggers anticheat"), genera delegaciones separadas para cada role persona, aplicandolas secuencialmente.
 
 ### Paso 2: Leer Contexto del Servicio
 
@@ -45,16 +45,16 @@ Si la tarea cruza dominios (ej: "add WebSocket event that triggers anticheat"), 
 
 ### Paso 3: Generar Prompt de Delegacion
 
-Produce un prompt listo para copiar/pegar al agente:
+Produce un prompt listo para copiar/pegar:
 
 ```
 ============================================
-  DELEGACION: [Agente]
+  DELEGACION: [Role Persona]
   Servicio: [servicio]
   Tarea: [descripcion]
 ============================================
 
-[Template del agente rellenado con:]
+[Template del role persona rellenado con:]
 - Servicio especifico
 - Tarea concreta
 - Archivos existentes relevantes (con rutas)
@@ -82,7 +82,7 @@ CRITERIO DE ACEPTACION:
 
 Antes de presentar la delegacion:
 - La tarea es coherente con la fase actual?
-- El agente seleccionado es el correcto?
+- El role persona seleccionado es el correcto?
 - Los archivos listados existen?
 - Los criterios de aceptacion son verificables?
 

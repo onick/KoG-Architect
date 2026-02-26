@@ -136,21 +136,21 @@ kog/
 - Shared types imported cleanly from monorepo packages
 - **Exit criteria:** Zero direct backend calls from frontend. Rate limiting active. Lighthouse > 90.
 
-## 6. Specialized Agent Templates
+## 6. Delegation Templates
 
-This skill delegates to 5 specialized agents. Each agent has strict rules and deliverables. See `agents/` directory for full templates:
+When a task falls into a specialized domain, adopt the role described in the corresponding template. These are NOT separate subagents — they are role personas that YOU switch into depending on the task domain. See `references/` for the full delegation templates:
 
-1. **nestjs-backend-agent** — NestJS modules, controllers, services, DI, DTOs, testing
-2. **realtime-game-agent** — game-engine, clock-service, websocket-gateway, Redis atomics
-3. **anticheat-queues-agent** — anticheat-service, Bull workers, Stockfish/Lc0, resilience
-4. **nextjs-frontend-agent** — Next.js 15, App Router, Socket.IO client, shared types
-5. **devops-sre-agent** — Docker, K8s, GitHub Actions, probes, Prometheus
+1. **nestjs-backend-agent** (`references/nestjs-backend-agent.md`) — NestJS modules, controllers, services, DI, DTOs, testing
+2. **realtime-game-agent** (`references/realtime-game-agent.md`) — game-engine, clock-service, websocket-gateway, Redis atomics
+3. **anticheat-queues-agent** (`references/anticheat-queues-agent.md`) — anticheat-service, Bull workers, Stockfish/Lc0, resilience
+4. **nextjs-frontend-agent** (`references/nextjs-frontend-agent.md`) — Next.js 15, App Router, Socket.IO client, shared types
+5. **devops-sre-agent** (`references/devops-sre-agent.md`) — Docker, K8s, GitHub Actions, probes, Prometheus
 
 ### Delegation Rules
-- ALWAYS specify which agent to use for a task
-- ALWAYS include the target service/module in the delegation
-- NEVER delegate cross-cutting concerns to a single agent — split into service-specific tasks
-- Every delegation MUST include the deliverable format (files + tests)
+- ALWAYS specify which role template applies to the task
+- ALWAYS include the target service/module
+- For cross-cutting concerns, apply one role at a time sequentially (not in parallel)
+- Every task MUST include the deliverable format (files + tests)
 
 ## 7. Persistent State
 
@@ -271,6 +271,7 @@ Status: [not-started|in-progress|complete]
 
 ## 10. References
 
+### Domain Knowledge
 | File | Content |
 |------|---------|
 | `references/nestjs-microservices.md` | NestJS patterns for the monorepo |
@@ -281,3 +282,12 @@ Status: [not-started|in-progress|complete]
 | `references/security-anticheat.md` | JWT, guards, anti-cheat pipeline |
 | `references/database-polyglot.md` | CockroachDB + MongoDB + Redis patterns |
 | `references/devops-k8s.md` | Docker, K8s, CI/CD, monitoring |
+
+### Delegation Templates (Role Personas)
+| File | Role |
+|------|------|
+| `references/nestjs-backend-agent.md` | Senior NestJS Architect — modules, DI, DTOs, testing |
+| `references/realtime-game-agent.md` | Real-Time Systems Engineer — game state, WebSocket, Redis atomics |
+| `references/anticheat-queues-agent.md` | Security & Async Engineer — Stockfish/Lc0, Bull queues, DLQ |
+| `references/nextjs-frontend-agent.md` | Senior Next.js 15 Engineer — App Router, Socket.IO client |
+| `references/devops-sre-agent.md` | SRE — Docker, K8s, CI/CD, probes, monitoring |
