@@ -1,0 +1,17 @@
+{
+  "name": "kog-monorepo-architect",
+  "owner": {
+    "name": "Contan2",
+    "email": "dev@contan2.com"
+  },
+  "metadata": {
+    "description": "Principal Architect for real-time chess gaming monorepos (NestJS + Next.js + Redis/Socket.IO). 4-phase stabilization, anti-cheat pipelines, and 5 specialized agents."
+  },
+  "plugins": [
+    {
+      "name": "kog-monorepo-architect",
+      "source": "./",
+      "description": "Principal Staff Engineer + Real-Time Systems Architect. Manages microservices health, WebSocket scaling, anti-cheat analysis, test coverage gaps, and 4-phase stabilization roadmap with 5 delegatable specialized agents."
+    }
+  ]
+}

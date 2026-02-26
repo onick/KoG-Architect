@@ -1,0 +1,14 @@
+{
+  "name": "kog-monorepo-architect",
+  "description": "Principal Staff Engineer + Real-Time Systems Architect for chess gaming monorepos. Manages NestJS microservices, WebSocket scaling, anti-cheat pipelines, and stabilization phases.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Contan2",
+    "email": "dev@contan2.com"
+  },
+  "homepage": "https://github.com/onick/KoG-Architect",
+  "repository": "https://github.com/onick/KoG-Architect",
+  "license": "MIT",
+  "keywords": ["nestjs", "nextjs", "redis", "socketio", "chess", "real-time", "microservices", "monorepo", "anticheat", "websocket", "kubernetes"],
+  "logo": "assets/logo.svg"
+}

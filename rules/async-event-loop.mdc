@@ -1,0 +1,13 @@
+---
+description: Never block the Node.js event loop. Use Bull queues for CPU-heavy operations.
+alwaysApply: true
+globs: "services/**/*.ts"
+---
+
+The Node.js event loop must never be blocked:
+
+- Any operation taking > 50ms goes to a Bull Queue (Stockfish analysis, Elo recalculation, batch analytics).
+- chess.js single-move validation (~0.2ms) is acceptable in the hot path.
+- chess.js full-game analysis or all-legal-moves computation MUST go to a queue.
+- Bull queues require: retry policy (3 attempts), exponential backoff (2s base), timeout, Dead Letter Queue.
+- Stockfish/Lc0 workers: max 4 concurrent Stockfish, max 2 Lc0 per container.

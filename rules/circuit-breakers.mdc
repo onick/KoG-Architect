@@ -1,0 +1,13 @@
+---
+description: Cross-service dependencies must have circuit breakers and fallbacks.
+alwaysApply: true
+globs: "services/**/*.ts"
+---
+
+Resilience over features:
+
+- If `anticheat-service`, `analytics`, or `rating-service` goes down, `game-engine` MUST continue functioning.
+- Every cross-service call wraps in a circuit breaker (5 failures → open for 60s → half-open retry).
+- Bull queue workers have circuit breakers around engine process calls (Stockfish, Lc0).
+- Fallback behavior must be defined for every cross-service dependency.
+- Health endpoints (/health/live, /health/ready) on every service.

@@ -1,0 +1,14 @@
+---
+description: Every new service file must have a corresponding .spec.ts test file.
+alwaysApply: true
+globs: "services/**/*.ts"
+---
+
+Testing is mandatory, not optional:
+
+- Every new `.service.ts`, `.controller.ts`, `.gateway.ts`, `.guard.ts`, or `.processor.ts` file MUST have a corresponding `.spec.ts` file.
+- Minimum test coverage: happy path + 1 error/edge case.
+- "I'll add tests later" is not acceptable. Tests ship with the feature.
+- Current targets: 80% coverage on game-engine and clock-service (Phase 1), 70% on other services (Phase 2).
+- Use Jest with NestJS testing utilities (`@nestjs/testing`).
+- Mock Redis and database calls in unit tests. Use real Redis in integration tests.

@@ -1,0 +1,14 @@
+---
+description: TypeScript types and DTOs must live in shared packages, never duplicated across services.
+alwaysApply: true
+globs: "**/*.ts"
+---
+
+Single source of truth for types:
+
+- DTOs and TypeScript interfaces live in `packages/shared-types` and `packages/dto`.
+- Both `apps/kog-backend` and `apps/web` import from shared packages.
+- NEVER define the same interface in two different services or apps.
+- Use `class-validator` decorators on DTOs for runtime validation.
+- If you need a type that doesn't exist in shared packages, add it there first, then import.
+- Run the monorepo build to verify shared type changes don't break consumers.

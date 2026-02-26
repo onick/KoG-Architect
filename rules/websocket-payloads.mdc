@@ -1,0 +1,14 @@
+---
+description: WebSocket payloads must be minimal deltas, not full game state broadcasts.
+alwaysApply: true
+globs: "services/websocket-gateway/**/*.ts"
+---
+
+The websocket-gateway is the performance bottleneck. Payloads must be minimal:
+
+- Send ONLY the delta (move, clock update, move number). ~60 bytes per move.
+- NEVER broadcast full game state (FEN + PGN + history + captures). That's ~350+ bytes growing linearly.
+- Full state is sent ONLY on: initial connection, reconnection, or explicit state request.
+- Use Redis Adapter for multi-instance Socket.IO scaling.
+- Every WebSocket event handler MUST check JWT auth via WsJwtGuard.
+- Rate limit WebSocket events: max 5 moves per second per user (impossible in real chess = bot detection).

@@ -1,0 +1,11 @@
+---
+description: Backend is the single source of truth for game state. Frontend never decides game state.
+alwaysApply: true
+---
+
+The backend (game-engine, clock-service) is AUTHORITATIVE. The frontend (Next.js) is a view layer only.
+
+- Every chess move MUST be validated server-side with `chess.js` before being accepted or broadcast.
+- The client sends a move request; the server validates and broadcasts the result.
+- Never trust client-reported game state, clock values, or move legality.
+- WebSocket events from clients are REQUESTS, not commands.

@@ -1,0 +1,16 @@
+---
+description: Enforce polyglot database separation between Redis, CockroachDB, and MongoDB.
+alwaysApply: true
+---
+
+Database boundaries are strict:
+
+- **Redis** → Active game state, clocks, sessions, pub/sub, cache. Use for ALL hot data.
+- **CockroachDB (Prisma)** → Users, payments, ratings, game records. ACID transactions.
+- **MongoDB** → PGN history, anticheat reports, analytics logs. Write-heavy documents.
+
+Rules:
+- A service that reads from CockroachDB does NOT write to MongoDB in the same operation.
+- Active game state lives ONLY in Redis. Never store live games in CockroachDB.
+- Run `prisma generate` after ANY schema change to CockroachDB.
+- Use Prisma transactions for multi-model updates (ratings + game records).
