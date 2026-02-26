@@ -1,0 +1,26 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "kog-monorepo-architect",
+  "metadata": {
+    "description": "Principal Architect for real-time chess gaming monorepos (NestJS + Next.js + Redis/Socket.IO). Stabilization phases, anti-cheat pipelines, and 5 specialized agents."
+  },
+  "owner": {
+    "name": "Contan2",
+    "url": "https://github.com/onick"
+  },
+  "plugins": [
+    {
+      "name": "kog-monorepo-architect",
+      "description": "Principal Staff Engineer + Real-Time Systems Architect. Manages microservices health, WebSocket scaling, anti-cheat analysis, test coverage gaps, and 4-phase stabilization roadmap with 5 delegatable specialized agents.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Contan2",
+        "url": "https://github.com/onick"
+      },
+      "source": "./",
+      "category": "development",
+      "homepage": "https://github.com/onick/KoG-Architect",
+      "tags": ["nestjs", "nextjs", "redis", "socketio", "chess", "real-time", "microservices", "monorepo", "anticheat", "websocket", "kubernetes", "bull-queues"]
+    }
+  ]
+}
